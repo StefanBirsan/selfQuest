@@ -1,28 +1,31 @@
 import {StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity} from "react-native";
 import React, {useState} from "react";
 import {auth} from "../Scripts/Scripts";
-import { useNavigation } from '@react-navigation/native';
+import {createUserWithEmailAndPassword} from "@firebase/auth";
 
 
-
-const LoginScreen = () => {
-    const navigation = useNavigation();
+const RegisterScreen = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
 
+    const handleSingUP =  async () => {
 
-
-    const handleLogin = () => {
-        auth
-            .signInWithEmailAndPassword(email, password)
-            .then(userCredentials => {
+        await createUserWithEmailAndPassword(auth, email, password)
+            .then( (userCredentials) => {
                 const user = userCredentials.user;
-                console.log('Logged in with: ', user.email )
+                console.log(user.email);
+
+                let id = userCredentials.user.uid;
+                console.log(id)
+                console.log(user.uid)
+
             })
             .catch(error => alert(error.message))
+
     };
+
 
 
     return (
@@ -71,8 +74,7 @@ const LoginScreen = () => {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        onPress={() => navigation.navigate("Register")
-                        }
+                        onPress={handleSingUP}
                         style={[styles.buttos, styles.buttonoutline]}
                     >
 
@@ -161,4 +163,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default LoginScreen;
+export default RegisterScreen
