@@ -65,13 +65,7 @@ const RegisterScreen = () => {
 
                 <View style={styles.buttonContainer}>
 
-                    <TouchableOpacity
-                        onPress={handleLogin}
-                        style={styles.buttos}
-                    >
-                        <Text style={styles.buttontext}> Login </Text>
 
-                    </TouchableOpacity>
 
                     <TouchableOpacity
                         onPress={handleSingUP}
