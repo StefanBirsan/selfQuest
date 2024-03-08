@@ -1,14 +1,30 @@
 import {StyleSheet, Text, View, KeyboardAvoidingView, TextInput, TouchableOpacity} from "react-native";
 import React, {useState} from "react";
-import {auth} from "../Scripts/Scripts";
+import {auth, db} from "../Scripts/Scripts";
 import {createUserWithEmailAndPassword} from "@firebase/auth";
+import {ref , set } from 'firebase/database';
 
 
 const RegisterScreen = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
 
+    const dataAddOn =  (userUID) => {
+        console.log(userUID)
+        set(ref(db, `users/${userUID}`), {
+            username : username,
+            })
+            .then(
+                response => {
+                    console.log(response)
+                    console.log("Am ajuns aici")
+                }
+            )
+            .catch((error) => console.error(error));
+        console.log("Am ajuns si aci")
+    };
 
     const handleSingUP =  async () => {
 
@@ -18,8 +34,7 @@ const RegisterScreen = () => {
                 console.log(user.email);
 
                 let id = userCredentials.user.uid;
-                console.log(id)
-                console.log(user.uid)
+                dataAddOn(id, username)
 
             })
             .catch(error => alert(error.message))
@@ -37,6 +52,18 @@ const RegisterScreen = () => {
 
         >
             <View style={styles.inputcontainer}>
+
+                <TextInput
+
+                    placeholder="Username"
+
+                    value={username}
+                    onChangeText={text => setUsername(text)}
+
+                    style={styles.inpu}
+                    autoCapitalize="none"
+                >
+                </TextInput>
 
                 <TextInput
 
