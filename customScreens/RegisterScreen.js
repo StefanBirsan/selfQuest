@@ -15,10 +15,12 @@ const RegisterScreen = () => {
         console.log(userUID)
         set(ref(db, `users/${userUID}`), {
             username : username,
+            XP: 0,
+            HP: 100,
+            tags: [],
             })
             .then(
                 response => {
-                    console.log(response)
                     console.log("Am ajuns aici")
                 }
             )
