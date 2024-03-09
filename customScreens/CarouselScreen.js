@@ -10,8 +10,9 @@ import {
     ImageBackground
 } from "react-native";
 import data from "../assets/dataItem/data";
+import WhyButton from "../customButtons/WhyButton";
 
-// Component for representing the current screen
+
 const CurrentScreenIndicator = () => {
     return (
         <View style={styles.currentScreenIndicator}>
@@ -33,6 +34,9 @@ const CarouselScreen = () => {
                 </View>
 
                 <CurrentScreenIndicator />
+                <View style={styles.buttonContainer}>
+                    <WhyButton />
+                </View>
             </View>
         );
     };
@@ -67,17 +71,24 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
     },
     itemText: {
-        color: "black",
+        color: "white",
         textAlign: "center",
         lineHeight: 20,
         marginHorizontal: 35,
+        fontWeight: "bold",
+        textShadowColor: "black",
+        textShadowOffset: { width: 3, height: 1 },
+        textShadowRadius: 2,
     },
     itemTitle: {
-        color: "black",
+        color: "white",
         fontSize: 22,
-        fontWeight: "bold",
         textAlign: "center",
         marginVertical: 10,
+        fontWeight: "bold",
+        textShadowColor: "black",
+        textShadowOffset: { width: 2, height: 1 },
+        textShadowRadius: 2,
     },
     itemContainer: {
         flex: 1,
@@ -88,10 +99,15 @@ const styles = StyleSheet.create({
     },
     currentScreenIndicator: {
         marginTop: -20,
+        marginRight: 10,
     },
     indicatorDot: {
         fontSize: 24,
         color: "black",
+    },
+    buttonContainer: {
+        marginLeft: 'auto',
+        marginRight: 35,
     },
 });
 
