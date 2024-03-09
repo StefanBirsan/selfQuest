@@ -14,7 +14,7 @@ const RegisterScreen = () => {
     const dataAddOn =  (userUID) => {
         console.log(userUID)
         set(ref(db, `users/${userUID}`), {
-            username : username,
+
             XP: 0,
             HP: 100,
             tags: "empty",

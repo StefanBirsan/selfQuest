@@ -24,6 +24,8 @@ const TagScreen = () =>{
         console.log(userUID);
         try {
             await set(ref(db, `users/${userUID}`), {
+                XP: 0,
+                HP: 100,
                 tags: selectedTags,
             });
             console.log("Data added successfully");

@@ -30,7 +30,7 @@ const ButonSR = ({ onPress, title }) => (
 
 const MainScreen = () => {
     return (
-        <ImageBackground source={require('../assets/images/background.png')} style={styles.container}>
+        <ImageBackground source={require('../assets/images/background2.png')} style={styles.container}>
             <View style={styles.sus}>
                 <Image style={styles.logo} source={require('../assets/images/sidequest.png')}/>
                 <Text style={styles.desc}>
