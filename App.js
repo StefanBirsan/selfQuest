@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "@firebase/auth";
 import {auth} from "./Scripts/Scripts";
+import CarouselScreen from "./customScreens/CarouselScreen";
 
 const Stack = createStackNavigator();
 
@@ -13,8 +14,17 @@ const Stack = createStackNavigator();
 const AuthStack = () => {
     return (
         <Stack.Navigator
-            initialRouteName={'Login'}
+            initialRouteName={'Why'}
         >
+            <Stack.Screen
+                name="Why"
+                component={CarouselScreen}
+                options={{
+                    title: 'Why',
+                    headerShown: false,
+                }}
+            />
+
             <Stack.Screen
                 name="Login"
                 component={LoginScreen}
