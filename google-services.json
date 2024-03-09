@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "123691393634",
+    "firebase_url": "https://selfquest-ccf0d-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "selfquest-ccf0d",
+    "storage_bucket": "selfquest-ccf0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123691393634:android:7fc27e1f4518c9f6bd273b",
+        "android_client_info": {
+          "package_name": "com.TheHungryDevs.SelfQuest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwbLM4WoaD3YJ6pMMvpPnLzkcfg1HdS30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
