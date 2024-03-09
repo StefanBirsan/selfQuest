@@ -7,9 +7,31 @@ import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "@firebase/auth";
 import {auth} from "./Scripts/Scripts";
 import CarouselScreen from "./customScreens/CarouselScreen";
+import TagScreen from "./customScreens/TagScreen";
 
 const Stack = createStackNavigator();
 
+const TagStack = () => {
+    return (
+        <Stack.Navigator
+            initialRouteName={'MainScreen'}
+        >
+            <Stack.Screen
+                name="TagScreen"
+                component={TagScreen}
+                options={{
+                    title: 'Tags',
+                    headerShown: false,
+                    headerTintColor: '#424769',
+                    headerTitleStyle: {
+                        fontWeight: 'bold',
+                        fontSize: 25,
+                    },
+                }}
+            />
+        </Stack.Navigator>
+    );
+}
 
 const AuthStack = () => {
     return (
@@ -87,6 +109,7 @@ const AppStack = () => {
 
 export default function App() {
     const [isLogged, setIsLogged] = useState(true);
+    const [hasTags, setHasTags] = useState(false);
 
     useEffect( () => {
         onAuthStateChanged(auth, (user) => {
@@ -100,8 +123,7 @@ export default function App() {
 
   return (
       <NavigationContainer>
-            {isLogged && <AppStack />}
-            {!isLogged && <AuthStack />}
+            {!isLogged ? <AuthStack />:!hasTags ? <TagStack />:<AppStack />}
       </NavigationContainer>
   );
 }

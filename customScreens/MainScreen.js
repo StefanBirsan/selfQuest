@@ -62,9 +62,16 @@ const styles = StyleSheet.create({
     },
     desc:{
         alignSelf:"center",
-        color:'yellow',
+        color:'#F8E559',
         fontWeight:"bold",
-        fontSize:15,
+        fontSize:20,
+        textAlign: 'center',
+        paddingHorizontal: 20,
+        lineHeight: 28,
+        textShadowColor: 'rgba(0, 0, 0, 0.25)',
+        textShadowOffset: { width: 0, height: 4 },
+        textShadowRadius: 4,
+        marginBottom: 20,
     },
     sus:{
 
@@ -95,13 +102,13 @@ const styles = StyleSheet.create({
         flex:3,
     },
     hp:{
-        backgroundColor:'red',
+        backgroundColor:'#EE4266',
         borderRadius:10,
         textAlign:'center',
         elevation:5,
     },
     xp:{
-        backgroundColor:'yellow',
+        backgroundColor:'#F8E559',
         borderRadius:10,
         textAlign:'center',
         elevation:5,
