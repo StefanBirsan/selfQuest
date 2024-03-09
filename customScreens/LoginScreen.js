@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2D3250'
+        backgroundColor: '#332941'
 
     },
 
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
 
     buttos : {
 
-        backgroundColor: '#F6B17A',
+        backgroundColor: '#F8E559',
         width: '100%',
         padding: 15,
         borderRadius: 10,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
 
         backgroundColor: 'white',
         marginTop: 5,
-        borderColor: '#7077A1',
+        borderColor: '#864AF9',
         borderWidth: 4,
 
     },

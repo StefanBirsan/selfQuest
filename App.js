@@ -31,9 +31,9 @@ const AuthStack = () => {
                 options={{
                 title: 'Login',
                 headerStyle: {
-                    backgroundColor: '#F6B17A',
+                    backgroundColor: '#F8E559',
                 },
-                headerTintColor: '#424769',
+                headerTintColor: '#3B3486',
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     fontSize: 25,
@@ -46,7 +46,7 @@ const AuthStack = () => {
                 options={{
                 title: 'Register',
                 headerStyle: {
-                    backgroundColor: '#F6B17A',
+                    backgroundColor: '#F8E559',
                 },
                 headerTintColor: '#424769',
                 headerTitleStyle: {
