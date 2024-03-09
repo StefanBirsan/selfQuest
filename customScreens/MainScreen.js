@@ -5,6 +5,16 @@ import {
     Image,
     ImageBackground, TouchableOpacity,
 } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const removeKey = async (key) => {
+    try {
+        await AsyncStorage.removeItem(key);
+        console.log(`Key '${key}' removed successfully.`);
+    } catch (error) {
+        console.error(`Error removing key '${key}':`, error);
+    }
+};
 
 const ButonPH = ({ onPress, title }) => (
     <TouchableOpacity onPress={onPress} style={styles.ButonPHContainer}>
@@ -37,7 +47,7 @@ const MainScreen = () => {
             </View>
             <View style={styles.josjos}>
                 <ButonSR title={'Settings'}/>
-                <ButonSR title={'Reminders'}/>
+                <ButonSR onPress={()=> removeKey('userToken')} title={'Reminders'}/>
             </View>
         </ImageBackground>
     );

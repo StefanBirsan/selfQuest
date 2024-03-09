@@ -155,7 +155,7 @@ const TagScreen = () =>{
                 </View>
                     <Tag
                         title={'Continue'}
-                        onPress={dataAddOn(userId)}
+                        onPress={() => dataAddOn(userId)}
                         style={styles.continueS}
                     />
             </ImageBackground>

@@ -17,7 +17,7 @@ const RegisterScreen = () => {
             username : username,
             XP: 0,
             HP: 100,
-            tags: [],
+            tags: "empty",
             })
             .then(
                 response => {

@@ -9,6 +9,10 @@ const Tag = ({ onPress, title }) => (
 );
 
 const styles = StyleSheet.create({
+    pressedButton: {
+        backgroundColor: '#864AF9', // Change this color to the pressed color
+    },
+
     TagContainer: {
         backgroundColor: '#F8E559',
         borderRadius: 20,
