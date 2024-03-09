@@ -13,7 +13,7 @@ const data = [
     },
     {
         id: 3,
-        image: require('../images/demon.png'),
+        image: require('../images/flowertrouble.png'),
         title: "Perfect Accessibility:",
         text: 'Use the app anywhere, any time you want and the results will be visible in as little as 21 days.',
     }
