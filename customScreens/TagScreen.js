@@ -6,6 +6,9 @@ import {
 } from 'react-native';
 import Tag from "../customButtons/TagButtons";
 import {useState} from "react";
+import {auth, db} from "../Scripts/Scripts";
+import {ref, set} from "firebase/database";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const image = {uri: 'https://images.unsplash.com/photo-1613742631162-cdba058776b9?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D'}
@@ -14,6 +17,31 @@ const image = {uri: 'https://images.unsplash.com/photo-1613742631162-cdba058776b
 
 const TagScreen = () =>{
     const [selectedTags, setSelectedTags] = useState([]);
+
+    const userId = auth.currentUser ? auth.currentUser.uid : null;
+
+    const dataAddOn = async (userUID) => {
+        console.log(userUID);
+        try {
+            await set(ref(db, `users/${userUID}`), {
+                tags: selectedTags,
+            });
+            console.log("Data added successfully");
+            await storeKey();
+        } catch (error) {
+            console.error("Error adding data:", error);
+        }
+    };
+
+    const storeKey = async () => {
+        try {
+            await AsyncStorage.setItem('userToken', 'yes');
+            console.log('Data stored successfully.');
+        } catch (error) {
+            console.error('Error storing data:', error);
+        }
+    };
+
 
     const handleTagPress = (tagTitle) => {
 
@@ -119,10 +147,15 @@ const TagScreen = () =>{
                         onPress={() => handleTagPress('alcohol')}
                         selected={selectedTags.includes('alcohol')}
                     />
+                    <Tag
+                        title={'Porn Addiction'}
+                        onPress={() => handleTagPress('Porn Addiction')}
+                        selected={selectedTags.includes('Porn Addiction')}
+                    />
                 </View>
                     <Tag
                         title={'Continue'}
-                        onPress={() => console.log(selectedTags)}
+                        onPress={dataAddOn(userId)}
                         style={styles.continueS}
                     />
             </ImageBackground>
