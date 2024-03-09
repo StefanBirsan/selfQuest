@@ -70,9 +70,7 @@ const AppStack = () => {
                 component={MainScreen}
                 options={{
                 title: 'Home',
-                headerStyle: {
-                    backgroundColor: '#F6B17A',
-                },
+                headerShown: false,
                 headerTintColor: '#424769',
                 headerTitleStyle: {
                     fontWeight: 'bold',
