@@ -55,17 +55,6 @@ const RegisterScreen = () => {
         >
             <View style={styles.inputcontainer}>
 
-                <TextInput
-
-                    placeholder="Username"
-
-                    value={username}
-                    onChangeText={text => setUsername(text)}
-
-                    style={styles.inpu}
-                    autoCapitalize="none"
-                >
-                </TextInput>
 
                 <TextInput
 
