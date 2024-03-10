@@ -1,80 +1,79 @@
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    ImageBackground, TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-const removeKey = async (key) => {
-    try {
-        await AsyncStorage.removeItem(key);
-        console.log(`Key '${key}' removed successfully.`);
-    } catch (error) {
-        console.error(`Error removing key '${key}':`, error);
-    }
-};
-
-const ButonPH = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPress} style={styles.ButonPHContainer}>
-        <Text style={styles.ButonText}>{title}</Text>
-    </TouchableOpacity>
-);
-
-const ButonSR = ({ onPress, title }) => (
-    <TouchableOpacity onPress={onPress} style={styles.ButonSRContainer}>
-        <Text style={styles.ButonText}>{title}</Text>
-    </TouchableOpacity>
-);
+import { auth } from "../Scripts/Scripts";
 
 const MainScreen = () => {
+    const removeKey = async (key) => {
+        try {
+            await AsyncStorage.removeItem(key);
+            console.log(`Key '${key}' removed successfully.`);
+        } catch (error) {
+            console.error(`Error removing key '${key}':`, error);
+        }
+    };
+
+    const ButonPH = ({ onPress, title }) => (
+        <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, styles.whiteBorder]}>
+            <Text style={styles.buttonText}>{title}</Text>
+        </TouchableOpacity>
+    );
+
+    const ButonSR = ({ onPress, title }) => (
+        <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, styles.whiteBorder]}>
+            <Text style={styles.buttonText}>{title}</Text>
+        </TouchableOpacity>
+    );
+
     return (
         <ImageBackground source={require('../assets/images/background2.png')} style={styles.container}>
-            <View style={styles.sus}>
-                <Image style={styles.logo} source={require('../assets/images/sidequest.png')}/>
-                <Text style={styles.desc}>
-                    Your personal portal to self improvement
-                </Text>
+            <View style={styles.section}>
+                <Image style={styles.logo} source={require('../assets/images/sidequest.png')} />
+                <Text style={styles.description}>Your personal portal to self improvement</Text>
             </View>
-            <View style={styles.jos}>
-                <Image source={undefined} style={styles.avatar}/>
-                <View style={styles.detalii}>
-                    <Text style={styles.hp}>Hp baga functie</Text>
-                    <Text style={styles.xp}>Xp baga functie</Text>
-                    <ButonPH title={'Personal Hub'}/>
-                </View>
+            <View style={styles.section}>
+                <View style={styles.avatar} />
             </View>
-            <View style={styles.josjos}>
-                <ButonSR title={'Settings'}/>
-                <ButonSR onPress={()=> removeKey('userToken')} title={'Reminders'}/>
+
+            <View style={styles.barContainer}>
+                <Text style={styles.healthText}>Health</Text>
+                <View style={styles.bar2} />
+                <View style={styles.bar} />
+            </View>
+            <View style={styles.barContainer2}>
+                <Text style={styles.xpText}>Experience</Text>
+                <View style={styles.bar3} />
+                <View style={styles.bar4} />
+            </View>
+
+            <View style={styles.section}>
+                <ButonPH title={'Personal Hub'} />
+                <ButonSR title={'Settings'} />
+                <ButonSR onPress={() => removeKey('userToken')} title={'Reminders'} />
             </View>
         </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-
+    container: {
+        flex: 1,
     },
-
-    ButonPHText:{
-        alignSelf:'center',
-        fontWeight:"bold",
+    section: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
-    logo:{
-        height:'70%',
-        width:'90%',
-        alignSelf:"center",
-        marginTop:"9%",
-        marginLeft:'3%',
+    logo: {
+        height: '50%',
+        width: '90%',
+        resizeMode: 'contain',
+        marginTop: 120,
     },
-    desc:{
-        alignSelf:"center",
-        color:'#F8E559',
-        fontWeight:"bold",
-        fontSize:20,
+    description: {
+        color: '#F8E559',
+        fontWeight: "bold",
+        fontSize: 20,
         textAlign: 'center',
         paddingHorizontal: 20,
         lineHeight: 28,
@@ -83,82 +82,110 @@ const styles = StyleSheet.create({
         textShadowRadius: 4,
         marginBottom: 20,
     },
-    sus:{
+    avatar: {
+        borderRadius: 100,
+        borderWidth: 10,
+        borderColor: '#A955E6',
+        backgroundColor: 'transparent',
+        height: 160,
+        width: 160,
+        marginTop: 10,
 
-        flex:1,
-    },
-    jos:{
-
-        flex:3,
-        flexDirection:"row",
-        justifyContent:"space-evenly",
-    },
-    avatar:{
-        borderRadius:100,
-        borderWidth:10,
-        borderColor:'#A955E6',
-        backgroundColor:'transparent',
-        height:'40%',
-        marginTop:'10%',
-        marginLeft:'2%',
-        flex:2,
-    },
-    detalii:{
-        justifyContent:"space-evenly",
-        height:200,
-        marginTop:'8%',
-        marginLeft:'2%',
-        marginRight:'2%',
-        flex:3,
-    },
-    hp:{
-        backgroundColor:'#EE4266',
-        borderRadius:10,
-        textAlign:'center',
-        elevation:5,
-    },
-    xp:{
-        backgroundColor:'#F8E559',
-        borderRadius:10,
-        textAlign:'center',
-        elevation:5,
-    },
-    josjos:{
-        flex:1,
-        flexDirection:"row",
-        justifyContent:'space-around',
     },
 
-    ButonSRText:{
-        alignSelf:'center',
-        fontWeight:"bold",
-        fontSize:16,
+    barContainer: {
+        justifyContent: "center",
+        alignItems: "center",
     },
-    ButonPHContainer: {
+
+    bar: {
+        backgroundColor: 'red',
+        width: 250,
+        height: 20,
+        borderRadius: 10,
+        marginTop: 20,
+        position: 'absolute',
+        zIndex: 2,
+    },
+
+    bar2: {
+        backgroundColor: 'black',
+        width: 260,
+        height: 30,
+        borderRadius: 10,
+        marginTop: -30,
+        position: 'absolute',
+        zIndex: 1,
+    },
+
+    healthText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'white',
+        fontSize: 15,
+        marginBottom: 5,
+        zIndex: 3,
+    },
+
+    xpText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize: 15,
+        marginBottom: 5,
+        zIndex: 3,
+    },
+
+    barContainer2: {
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 20,
+    },
+
+    bar3: {
+        backgroundColor: '#F8E559',
+        width: 250,
+        height: 20,
+        borderRadius: 10,
+        marginTop: 20,
+        position: 'absolute',
+        zIndex: 2,
+    },
+
+    bar4: {
+        backgroundColor: 'black',
+        width: 260,
+        height: 30,
+        borderRadius: 10,
+        marginTop: -30,
+        position: 'absolute',
+        zIndex: 1,
+    },
+
+    buttonContainer: {
         backgroundColor: '#A955E6',
         borderRadius: 20,
         height: 40,
         paddingHorizontal: 20,
         justifyContent: 'center',
         elevation: 5,
+        marginTop: 20,
     },
-    ButonSRContainer: {
-        backgroundColor: '#A955E6',
-        borderRadius: 30,
-        height: 60,
-        width: '45%',
-        paddingHorizontal: 20,
-        justifyContent: 'center',
-        elevation: 5,
-    },
-    ButonText: {
-        alignSelf: 'center',
-        fontWeight: "bold",
+
+
+    buttonText: {
         color: 'white',
+        fontWeight: 'bold',
         fontSize: 16,
+        textShadowColor: '#000',
+        textShadowOffset: { width: 1, height: 1 },
+        textShadowRadius: 3,
     },
+    whiteBorder: {
+        borderColor: 'white',
+        borderWidth: 3,
+    },
+
 });
-
-
 
 export default MainScreen;
