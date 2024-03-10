@@ -9,7 +9,7 @@ const RegisterScreen = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [username, setUsername] = useState('')
+    //const [username, setUsername] = useState('')
 
     const dataAddOn =  (userUID) => {
         console.log(userUID)
@@ -36,7 +36,7 @@ const RegisterScreen = () => {
                 console.log(user.email);
 
                 let id = userCredentials.user.uid;
-                dataAddOn(id, username)
+                dataAddOn(id)
 
             })
             .catch(error => alert(error.message))
